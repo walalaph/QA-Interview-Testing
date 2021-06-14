@@ -1,0 +1,43 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "driver": 1,
+      "tasks": [
+        {
+          "location": "A",
+          "date": "16-05-2021",
+          "id": 1
+        },
+        {
+          "location": "B",
+          "date": "16-05-2021",
+          "id": 2
+        }
+      ]
+    },
+    null
+  ],
+  "boxs": [
+    {
+      "id": 2,
+      "boxes": [
+        {
+          "id": 1,
+          "code":111,
+          "max": 3,
+          "current": 0
+        },
+        {
+          "id": 2,
+          "code":222,
+          "max": 2,
+          "current": 0
+        }
+      ]
+    }
+  ],
+  "scan": [
+  ],
+  "done": []
+}
