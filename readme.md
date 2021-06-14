@@ -29,6 +29,9 @@ Explanation: The three integers "1", "01", and "001" all represent the same inte
 the leading zeros are ignored when comparing their decimal values.
 ```
 
+##### Deliverable
+1. A python script of the solution
+
 #### 2. QA Skills
 Company A is developing a mobile application for truck driver. The application help truck driver to track their job, scan boxs at pickup point or delivery point for validating order and much more.
 
