@@ -60,9 +60,9 @@ Backend Developer developed the RESTful API as follows
 4. Complete job ```POST /done```
 
 ##### Deliverable
-1. Test Plan in this Splint
-2. Test Case for Frontend to cover all possible case
-3. Script of Automated Rest API testing with ROBOT Framework, and instruction to run your script
+1. Test Case for Frontend to cover all possible case
+2. Script of Automated Rest API testing with ROBOT Framework, and instruction to run your script
+3. Test Plan for testing both Frontend and Backend
 
 
 #### Appendix
