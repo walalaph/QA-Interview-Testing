@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.2 (Python 3.8.5 on win32)" generated="20210620 19:27:59.962" rpa="false">
+<suite id="s1" name="apiTesting" source="C:\Users\walai\OneDrive\QA-Interview-Testing\apiTesting.robot">
+<test id="s1-t1" name="Test List of Driver Job">
+<kw name="Get Request Job List And Verify Status Success">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>jobs</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210620 19:28:00.236" level="INFO">Creating Session using : alias=jobs, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210620 19:28:00.235" endtime="20210620 19:28:00.236"></status>
+</kw>
+<kw name="Get On Session" library="RequestsLibrary">
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>jobs</arg>
+<arg>/jobs</arg>
+<arg>expected_status=200</arg>
+</arguments>
+<assign>
+<var>${resp_jobs}</var>
+</assign>
+<msg timestamp="20210620 19:28:02.336" level="INFO">GET Request : url=http://localhost:8080/jobs 
+ path_url=/jobs 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210620 19:28:02.336" level="INFO">GET Response : url=http://localhost:8080/jobs 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '245', 'ETag': 'W/"f5-VWCNjnQbqy1KCIDLZtIp4xDDkjU"', 'Date': 'Sun, 20 Jun 2021 12:28:02 GMT', 'Connection': 'keep-alive'} 
+ body=[
+  {
+    "id": 1,
+    "driver": 1,
+    "tasks": [
+      {
+        "location": "A",
+        "date": "16-05-2021",
+        "id": 1
+      },
+      {
+        "location": "B",
+        "date": "16-05-2021",
+        "id": 2
+      }
+    ]
+  },
+  null
+] 
+ </msg>
+<msg timestamp="20210620 19:28:02.336" level="INFO">${resp_jobs} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210620 19:28:00.237" endtime="20210620 19:28:02.336"></status>
+</kw>
+<status status="PASS" starttime="20210620 19:28:00.235" endtime="20210620 19:28:02.337"></status>
+</kw>
+<status status="PASS" starttime="20210620 19:28:00.234" endtime="20210620 19:28:02.337" critical="yes"></status>
+</test>
+<test id="s1-t2" name="Test List of Boxs In Job">
+<kw name="Get Request Box List">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>boxs</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210620 19:28:02.341" level="INFO">Creating Session using : alias=boxs, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210620 19:28:02.340" endtime="20210620 19:28:02.341"></status>
+</kw>
+<kw name="Get On Session" library="RequestsLibrary">
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>boxs</arg>
+<arg>/boxs</arg>
+<arg>expected_status=200</arg>
+</arguments>
+<assign>
+<var>${resp_boxs}</var>
+</assign>
+<msg timestamp="20210620 19:28:04.413" level="INFO">GET Request : url=http://localhost:8080/boxs 
+ path_url=/boxs 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20210620 19:28:04.413" level="INFO">GET Response : url=http://localhost:8080/boxs 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Vary': 'Origin, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'X-Content-Type-Options': 'nosniff', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '273', 'ETag': 'W/"111-u2Dd2w1X5sCX7QxBuHQAl2zUjBI"', 'Date': 'Sun, 20 Jun 2021 12:28:04 GMT', 'Connection': 'keep-alive'} 
+ body=[
+  {
+    "id": 2,
+    "boxes": [
+      {
+        "id": 1,
+        "code": 111,
+        "max": 3,
+        "current": 0
+      },
+      {
+        "id": 2,
+        "code": 222,
+        "max": 2,
+        "current": 0
+      }
+    ]
+  },
+  {
+    "current": "1",
+    "id": 3
+  }
+] 
+ </msg>
+<msg timestamp="20210620 19:28:04.413" level="INFO">${resp_boxs} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210620 19:28:02.341" endtime="20210620 19:28:04.413"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${resp_boxs}</arg>
+</arguments>
+<msg timestamp="20210620 19:28:04.414" level="INFO">${resp_boxs} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20210620 19:28:04.413" endtime="20210620 19:28:04.414"></status>
+</kw>
+<status status="PASS" starttime="20210620 19:28:02.340" endtime="20210620 19:28:04.414"></status>
+</kw>
+<kw name="Verify Box List">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp_boxs.json()[0]}[boxes]</arg>
+</arguments>
+<assign>
+<var>${boxes}</var>
+</assign>
+<msg timestamp="20210620 19:28:04.417" level="INFO">${boxes} = [{'id': 1, 'code': 111, 'max': 3, 'current': 0}, {'id': 2, 'code': 222, 'max': 2, 'current': 0}]</msg>
+<status status="PASS" starttime="20210620 19:28:04.416" endtime="20210620 19:28:04.417"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${boxes}</arg>
+<arg>0</arg>
+</arguments>
+<assign>
+<var>${boxes_id1}</var>
+</assign>
+<msg timestamp="20210620 19:28:04.417" level="INFO">${boxes_id1} = {'id': 1, 'code': 111, 'max': 3, 'current': 0}</msg>
+<status status="PASS" starttime="20210620 19:28:04.417" endtime="20210620 19:28:04.417"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${boxes}</arg>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${boxes_id2}</var>
+</assign>
+<msg timestamp="20210620 19:28:04.418" level="INFO">${boxes_id2} = {'id': 2, 'code': 222, 'max': 2, 'current': 0}</msg>
+<status status="PASS" starttime="20210620 19:28:04.417" endtime="20210620 19:28:04.418"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${boxes_id1}</arg>
+</arguments>
+<assign>
+<var>${box1_string}</var>
+</assign>
+<msg timestamp="20210620 19:28:04.419" level="INFO">${box1_string} = {'id': 1, 'code': 111, 'max': 3, 'current': 0}</msg>
+<status status="PASS" starttime="20210620 19:28:04.418" endtime="20210620 19:28:04.419"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${boxes_id2}</arg>
+</arguments>
+<assign>
+<var>${box2_string}</var>
+</assign>
+<msg timestamp="20210620 19:28:04.420" level="INFO">${box2_string} = {'id': 2, 'code': 222, 'max': 2, 'current': 0}</msg>
+<status status="PASS" starttime="20210620 19:28:04.419" endtime="20210620 19:28:04.420"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${box1_string}</arg>
+<arg>${boxes1}</arg>
+</arguments>
+<status status="PASS" starttime="20210620 19:28:04.420" endtime="20210620 19:28:04.421"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${box2_string}</arg>
+<arg>${boxes2}</arg>
+</arguments>
+<status status="PASS" starttime="20210620 19:28:04.421" endtime="20210620 19:28:04.422"></status>
+</kw>
+<status status="PASS" starttime="20210620 19:28:04.415" endtime="20210620 19:28:04.423"></status>
+</kw>
+<status status="PASS" starttime="20210620 19:28:02.339" endtime="20210620 19:28:04.423" critical="yes"></status>
+</test>
+<test id="s1-t3" name="Test Scan Box">
+<kw name="Post Request For Scan Box And Verify Status Success">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>scan</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210620 19:28:04.428" level="INFO">Creating Session using : alias=scan, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210620 19:28:04.427" endtime="20210620 19:28:04.428"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>code=111</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<msg timestamp="20210620 19:28:04.429" level="INFO">&amp;{data} = { code=111 }</msg>
+<status status="PASS" starttime="20210620 19:28:04.428" endtime="20210620 19:28:04.429"></status>
+</kw>
+<kw name="Post On Session" library="RequestsLibrary">
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>scan</arg>
+<arg>/scan</arg>
+<arg>json=${data}</arg>
+<arg>expected_status=anything</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20210620 19:28:06.510" level="INFO">POST Request : url=http://localhost:8080/scan 
+ path_url=/scan 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '15', 'Content-Type': 'application/json'} 
+ body=b'{"code": "111"}' 
+ </msg>
+<msg timestamp="20210620 19:28:06.510" level="INFO">POST Response : url=http://localhost:8080/scan 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Vary': 'Origin, X-HTTP-Method-Override, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'Access-Control-Expose-Headers': 'Location', 'Location': 'http://localhost:8080/scan/1', 'X-Content-Type-Options': 'nosniff', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '30', 'ETag': 'W/"1e-40yyxGycE2oNy26/PBwSnujPxz4"', 'Date': 'Sun, 20 Jun 2021 12:28:06 GMT', 'Connection': 'keep-alive'} 
+ body={
+  "code": "111",
+  "id": 1
+} 
+ </msg>
+<msg timestamp="20210620 19:28:06.510" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20210620 19:28:04.429" endtime="20210620 19:28:06.511"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>201</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20210620 19:28:06.511" endtime="20210620 19:28:06.511"></status>
+</kw>
+<status status="PASS" starttime="20210620 19:28:04.426" endtime="20210620 19:28:06.512"></status>
+</kw>
+<status status="PASS" starttime="20210620 19:28:04.425" endtime="20210620 19:28:06.515" critical="yes"></status>
+</test>
+<test id="s1-t4" name="Test Complete Job">
+<kw name="Post Request For Complete Box And Verify Status Success">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>done</arg>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210620 19:28:06.519" level="INFO">Creating Session using : alias=done, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20210620 19:28:06.519" endtime="20210620 19:28:06.519"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>id=1</arg>
+</arguments>
+<assign>
+<var>&amp;{data}</var>
+</assign>
+<msg timestamp="20210620 19:28:06.521" level="INFO">&amp;{data} = { id=1 }</msg>
+<status status="PASS" starttime="20210620 19:28:06.520" endtime="20210620 19:28:06.521"></status>
+</kw>
+<kw name="Post On Session" library="RequestsLibrary">
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<arguments>
+<arg>done</arg>
+<arg>/done</arg>
+<arg>json=${data}</arg>
+<arg>expected_status=anything</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20210620 19:28:08.577" level="INFO">POST Request : url=http://localhost:8080/done 
+ path_url=/done 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '11', 'Content-Type': 'application/json'} 
+ body=b'{"id": "1"}' 
+ </msg>
+<msg timestamp="20210620 19:28:08.577" level="INFO">POST Response : url=http://localhost:8080/done 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Vary': 'Origin, X-HTTP-Method-Override, Accept-Encoding', 'Access-Control-Allow-Credentials': 'true', 'Cache-Control': 'no-cache', 'Pragma': 'no-cache', 'Expires': '-1', 'Access-Control-Expose-Headers': 'Location', 'Location': 'http://localhost:8080/done/1', 'X-Content-Type-Options': 'nosniff', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '15', 'ETag': 'W/"f-LVI7jms7TcBMKj05knQDuy04c1o"', 'Date': 'Sun, 20 Jun 2021 12:28:08 GMT', 'Connection': 'keep-alive'} 
+ body={
+  "id": "1"
+} 
+ </msg>
+<msg timestamp="20210620 19:28:08.578" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20210620 19:28:06.521" endtime="20210620 19:28:08.578"></status>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<doc>Fails if response status code is different than the expected.</doc>
+<arguments>
+<arg>201</arg>
+<arg>${resp}</arg>
+</arguments>
+<status status="PASS" starttime="20210620 19:28:08.578" endtime="20210620 19:28:08.579"></status>
+</kw>
+<status status="PASS" starttime="20210620 19:28:06.518" endtime="20210620 19:28:08.579"></status>
+</kw>
+<status status="PASS" starttime="20210620 19:28:06.517" endtime="20210620 19:28:08.588" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20210620 19:27:59.967" endtime="20210620 19:28:08.608"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0">Critical Tests</stat>
+<stat pass="4" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="4" fail="0" id="s1" name="apiTesting">apiTesting</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

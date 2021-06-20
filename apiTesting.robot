@@ -25,7 +25,6 @@ Test Complete Job
 Get Request Job List And Verify Status Success
     Create Session      jobs    ${url} 
     ${resp_jobs}=      GET On Session    jobs    /jobs    expected_status=200
-    Log    ${resp_jobs.json()}
 
 Get Request Box List
     Create Session      boxs    ${url} 
@@ -34,7 +33,6 @@ Get Request Box List
 
 Verify Box List
     ${boxes}    Set Variable    ${resp_boxs.json()[0]}[boxes]
-    Log    ${boxes}
     ${boxes_id1} =      Get From List   ${boxes}    0
     ${boxes_id2} =      Get From List   ${boxes}    1
     ${box1_string}     Convert To String    ${boxes_id1}
@@ -44,14 +42,12 @@ Verify Box List
 
 Post Request For Scan Box And Verify Status Success
     Create Session      scan    ${url} 
-    &{data}=    Create dictionary  code=111    
+    &{data}=    Create dictionary  code=111
     ${resp}=    POST On Session    scan  /scan  json=${data}  expected_status=anything
     Status Should Be                 201  ${resp}
-    Log    ${resp.json()}
 
 Post Request For Complete Box And Verify Status Success
     Create Session      done    ${url} 
-    &{data}=    Create dictionary  id=1   
+    &{data}=    Create dictionary  id=1
     ${resp}=    POST On Session    done  /done  json=${data}  expected_status=anything
     Status Should Be                 201  ${resp}
-    Log    ${resp.json()}
