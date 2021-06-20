@@ -1,3 +1,6 @@
+# Prerequisite
+# >> pip install robotframework-requests
+
 ***Settings***
 Library    RequestsLibrary
 Library    Collections
